@@ -5,9 +5,11 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 
-public class Button {
+public class Button implements ActionListener {
 
     private JFrame frame;
     private JPanel panel;
@@ -32,13 +34,15 @@ public class Button {
         label.setText("Enter Numbers ");
         label.setForeground(Color.blue);
 
+
         output = new JLabel();
-        output.setText("Sums total");
+        output.setText("Total");
 
         textField1 = new JTextField(5);
         textField2 = new JTextField(5);
 
-        button = new JButton("Add Them");
+        button = new JButton("ADD");
+        button.addActionListener(this);
 
         panel.add(label);
         panel.add(textField1);
@@ -47,9 +51,14 @@ public class Button {
         panel.add(output);
 
         frame.add(panel);
-
     }
-    public void actionPerformed(ActiveEvent e){
-        System.out.println(textField1.getText()+textField2.getText());
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        //System.out.println(textField1.getText()+textField2.getText());
+        double num1 = Double.parseDouble(textField1.getText());
+        double num2 = Double.parseDouble(textField2.getText());
+        double sum = num1 + num2;
+        System.out.println("Total is " + ((num1)+(num2)));
     }
 }
